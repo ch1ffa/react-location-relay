@@ -1,0 +1,73 @@
+{
+  "name": "react-location-relay",
+  "version": "0.0.1",
+  "description": "An example for using react-location with relay",
+  "author": {
+    "name": "Vadim Evseev",
+    "email": "chiffa117@gmail.com"
+  },
+  "license": "MIT",
+  "main": "index.tsx",
+  "scripts": {
+    "start": "rimraf ./build && npm run relay && cross-env BROWSER=none craco start",
+    "build": "craco build",
+    "relay": "relay-compiler",
+    "update-schema": "get-graphql-schema http://localhost:8080/graphql > schema/schema.graphql",
+    "test": "cross-env CI=true react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix",
+    "fix-staged": "lint-staged"
+  },
+  "relay": {
+    "src": "./src",
+    "schema": "./schema/schema.graphql",
+    "language": "typescript"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "dependencies": {
+    "@craco/craco": "^6.4.2",
+    "graphql": "^15.7.2",
+    "meros": "1.2.0-next.3",
+    "react": "^17.0.2",
+    "react-content-loader": "^6.1.0",
+    "react-dom": "^17.0.2",
+    "react-location": "^3.3.0",
+    "react-relay": "^13.0.0-rc.1",
+    "relay-runtime": "^13.0.0-rc.1",
+    "subscriptions-transport-ws": "^0.11.0",
+    "twind": "^0.16.16"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@tailwindcss/postcss7-compat": "^2.2.17",
+    "@types/react": "^17.0.37",
+    "@types/react-dom": "^17.0.11",
+    "@types/react-relay": "^11.0.3",
+    "@typescript-eslint/eslint-plugin": "^5.6.0",
+    "@typescript-eslint/parser": "^5.6.0",
+    "autoprefixer": "^9.8.8",
+    "babel-plugin-relay": "^13.0.0-rc.1",
+    "cross-env": "^7.0.3",
+    "eslint": "^7.32.0",
+    "eslint-plugin-react": "^7.27.1",
+    "get-graphql-schema": "^2.1.2",
+    "lint-staged": "^12.1.2",
+    "postcss": "^7.0.39",
+    "react-location-devtools": "^3.3.0",
+    "relay-compiler": "^13.0.0-rc.1",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.5.4"
+  }
+}

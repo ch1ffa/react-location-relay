@@ -1,0 +1,3 @@
+[submodule "server/graphql-workshop"]
+	path = server/graphql-workshop
+	url = https://github.com/ChilliCream/graphql-workshop.git
