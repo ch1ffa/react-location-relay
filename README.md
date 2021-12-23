@@ -1,6 +1,12 @@
 # React-location-relay example
 
-To build the Hot Chocolate server example from [graphql-workshop](https://github.com/ChilliCream/graphql-workshop) repo:
+This repository uses server example from [graphql-workshop](https://github.com/ChilliCream/graphql-workshop) repo via submodule:
+
+```bash
+git clone https://github.com/ch1ffa/react-location-relay.git --recursive
+```
+
+To build server container:
 
 ```bash
 docker build server/graphql-workshop/code/complete/GraphQL -t gql-workshop
