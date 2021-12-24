@@ -52,7 +52,21 @@ const fetchQuery: FetchFunction = (params: RequestParameters, variables: Variabl
             break;
           }
 
-          sink.next(part.body);
+          const result = part.body;
+
+          // Realyism
+          if ('hasNext' in result) {
+            /* eslint-disable */
+            // @ts-ignore
+            if (!result.extensions) result.extensions = {};
+            // @ts-ignore
+            result.extensions.is_final = !result.hasNext;
+            // @ts-ignore
+            delete result.hasNext;
+            /* eslint-enable */
+          }
+
+          sink.next(result);
         }
       } else {
 
