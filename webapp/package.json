@@ -39,7 +39,7 @@
   "dependencies": {
     "@craco/craco": "^6.4.2",
     "graphql": "^15.7.2",
-    "meros": "1.2.0-next.3",
+    "meros": "1.2.0-next.4",
     "react": "^17.0.2",
     "react-content-loader": "^6.1.0",
     "react-dom": "^17.0.2",
