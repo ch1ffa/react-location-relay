@@ -43,7 +43,7 @@ export const SpeakersList: FC<ISpeakersList> =  ({ queryRef }) => {
         { speakers.length
           ? speakers.map((speaker, i) => {
             return (
-              <li key={i}>
+              <li key={i} className={tw`p-2 hover:bg-gray-100`}>
                 <SpeakersListItem speaker={speaker} />
               </li>
             );
@@ -54,10 +54,10 @@ export const SpeakersList: FC<ISpeakersList> =  ({ queryRef }) => {
       {
         hasNext && (
           <button
-            className={tw`py-1 px-2 text-xs bg-blue-500 text-white rounded-full`}
+            className={tw`py-1 px-2 ml-2 text-xs bg-blue-500 text-white rounded`}
             onClick={() => loadNext(10)}
           >
-                More
+            More
           </button>
         )
       }

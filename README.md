@@ -21,9 +21,10 @@ docker run -d -p 8080:80 gql-workshop
 To run webapp:
 
 ```bash
+cd webapp
 npm install
-```
-
-```bash
+npm run relay
 npm start
 ```
+
+or use any other package manager
