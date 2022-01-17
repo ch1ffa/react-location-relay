@@ -6,8 +6,6 @@ import type { LocationGenerics } from '@/routes';
 import { useMatch } from 'react-location';
 import { SpeakersList } from './SpeakersList';
 
-import { tw } from 'twind';
-
 import { List } from 'react-content-loader';
 
 export const Speakers: FC = () => {
@@ -20,7 +18,7 @@ export const Speakers: FC = () => {
     return null;
   }
 
-  const queryRef = usePreloadedQuery(
+  const speakers = usePreloadedQuery(
     graphql`
       query SpeakersQuery {
         ...SpeakersList_query @arguments(first: 10)
@@ -30,11 +28,8 @@ export const Speakers: FC = () => {
   );
 
   return (
-    <>
-      <div className={tw`text-3xl p-2`}>Speakers</div>
-      <Suspense fallback={<List />}>
-        <SpeakersList queryRef={queryRef} />
-      </Suspense>
-    </>
+    <Suspense fallback={<List />}>
+      <SpeakersList queryRef={speakers} />
+    </Suspense>
   );
 };

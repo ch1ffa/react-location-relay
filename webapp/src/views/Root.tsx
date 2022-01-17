@@ -17,7 +17,7 @@ export const Root: FC = () => {
             <div key={to}>
               <Link
                 to={to}
-                className={tw`block py-2 px-3 text-blue-700 hover:bg-gray-100`}
+                className={tw`block rounded py-2 px-3 text-blue-700 hover:bg-gray-100`}
                 getActiveProps={() => ({ className: tw`font-bold` })}
               >
                 {label}

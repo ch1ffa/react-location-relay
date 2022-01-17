@@ -9,10 +9,11 @@ import type { SpeakersListItem_speaker$key } from './__generated__/SpeakersListI
 import type { SpeakersListItem_modifySpeakerMutation } from './__generated__/SpeakersListItem_modifySpeakerMutation.graphql';
 
 interface ISpeakesListItem {
+  index: number;
   speaker: SpeakersListItem_speaker$key;
 }
 
-export const SpeakersListItem: FC<ISpeakesListItem> = ({ speaker }) => {
+export const SpeakersListItem: FC<ISpeakesListItem> = ({ index, speaker }) => {
 
   const [bioState, setBioState] = useState('');
 
@@ -67,18 +68,23 @@ export const SpeakersListItem: FC<ISpeakesListItem> = ({ speaker }) => {
   };
 
   return (
-    <div className={tw`grid grid-cols-2 gap-4`}>
-      <div>
-        {name}
+    <div className={tw`flex flex-row h-8 items-center gap-4`}>
+      <div className={tw`w-5`}>
+        {index}
       </div>
-      <input
-        type="text"
-        name="bio"
-        value={bioState}
-        className={tw`border-1 border-gray-200 rounded focus:outline-none focus:border-blue-700 focus:border-2`}
-        onChange={onChangeBio}
-        onBlur={onBlur}
-      />
+      <div className={tw`grid grid-cols-4 items-center`}>
+        <div className={tw`col-span-2`}>
+          {name}
+        </div>
+        <input
+          type='text'
+          name='bio'
+          value={bioState}
+          className={tw`col-span-2 border-1 border-gray-200 rounded focus:outline-none focus:border-blue-700 focus:border-2`}
+          onChange={onChangeBio}
+          onBlur={onBlur}
+        />
+      </div>
     </div>
   );
 };
