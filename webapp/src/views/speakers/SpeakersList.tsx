@@ -46,7 +46,7 @@ export const SpeakersList: FC<ISpeakersList> =  ({ queryRef }) => {
     <>
       <div className={tw`flex`}>
         <div className={tw`text-2xl p-2`}>Speakers</div>
-        <button className={tw`w-5`} onClick={() => setIsOpen(true)}>
+        <button className={tw`w-5 focus:outline-none`} onClick={() => setIsOpen(true)}>
           <UserAddIcon className={tw`text-gray-300 hover:text-blue-500 active:text-blue-400`} />
         </button>
       </div>
