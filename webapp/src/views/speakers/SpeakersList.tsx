@@ -3,7 +3,7 @@ import { usePaginationFragment } from 'react-relay';
 import graphql from 'babel-plugin-relay/macro';
 import type { SpeakersList_queryFragment } from './__generated__/SpeakersList_queryFragment.graphql';
 import type { SpeakersList_query$key } from './__generated__/SpeakersList_query.graphql';
-import { SpeakersListItem } from './SpeakersListItem';
+import { Speaker } from './Speaker';
 import { tw } from 'twind';
 import { UserAddIcon } from '@heroicons/react/outline';
 import { SpeakerAdd } from './SpeakerAdd';
@@ -30,7 +30,7 @@ export const SpeakersList: FC<ISpeakersList> =  ({ queryRef }) => {
           __id
           edges {
             node {
-              ...SpeakersListItem_speaker @defer
+              ...Speaker_speaker @defer
             }
           }
         }
@@ -56,7 +56,7 @@ export const SpeakersList: FC<ISpeakersList> =  ({ queryRef }) => {
           ? speakers.map((speaker, i) => {
             return (
               <li key={i} className={tw`p-2 hover:bg-gray-100`}>
-                <SpeakersListItem speaker={speaker} index={++i} />
+                <Speaker queryRef={speaker} index={++i} />
               </li>
             );
           })

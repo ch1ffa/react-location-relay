@@ -9,8 +9,8 @@ export const Root: FC = () => {
       <div className={tw`inline-flex w-full px-1 pt-2`}>
         {[
           ['speakers', 'Speakers'],
-          ['attendies', 'Attendies'],
           ['sessions', 'Sessions'],
+          ['attendees', 'Attendees'],
           ['tracks', 'Tracks'],
         ].map(([to, label]) => {
           return (

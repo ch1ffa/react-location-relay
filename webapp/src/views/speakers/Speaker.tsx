@@ -5,30 +5,30 @@ import { tw } from 'twind';
 
 import graphql from 'babel-plugin-relay/macro';
 
-import type { SpeakersListItem_speaker$key } from './__generated__/SpeakersListItem_speaker.graphql';
-import type { SpeakersListItem_modifySpeakerMutation } from './__generated__/SpeakersListItem_modifySpeakerMutation.graphql';
+import type { Speaker_speaker$key } from './__generated__/Speaker_speaker.graphql';
+import type { Speaker_modifySpeakerMutation } from './__generated__/Speaker_modifySpeakerMutation.graphql';
 
-interface ISpeakesListItem {
+interface ISpeaker {
   index: number;
-  speaker: SpeakersListItem_speaker$key;
+  queryRef: Speaker_speaker$key;
 }
 
-export const SpeakersListItem: FC<ISpeakesListItem> = ({ index, speaker }) => {
+export const Speaker: FC<ISpeaker> = ({ index, queryRef }) => {
 
   const [bioState, setBioState] = useState('');
 
-  const data = useFragment(
+  const speaker = useFragment(
     graphql`
-      fragment SpeakersListItem_speaker on Speaker {
+      fragment Speaker_speaker on Speaker {
         id
         name
         bio
       }
     `,
-    speaker,
+    queryRef,
   );
 
-  const { id, name, bio } = data;
+  const { id, name, bio } = speaker;
 
   useEffect(() => {
     if (bio) {
@@ -36,9 +36,9 @@ export const SpeakersListItem: FC<ISpeakesListItem> = ({ index, speaker }) => {
     }
   }, [bio]);
 
-  const [changeBio] = useMutation<SpeakersListItem_modifySpeakerMutation>(
+  const [changeBio] = useMutation<Speaker_modifySpeakerMutation>(
     graphql`
-      mutation SpeakersListItem_modifySpeakerMutation($input: ModifySpeakerInput!) {
+      mutation Speaker_modifySpeakerMutation($input: ModifySpeakerInput!) {
         modifySpeaker(input: $input) {
           speaker {
             id
