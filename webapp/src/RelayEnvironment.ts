@@ -3,33 +3,26 @@ import {
   Network,
   Environment,
   RecordSource,
-  Observable as ReactObservable,
+  Observable,
 } from 'relay-runtime';
 
 import type {
-  Variables,
   FetchFunction,
   GraphQLResponse,
   SubscribeFunction,
-  RequestParameters,
 } from 'relay-runtime';
 
-import { SubscriptionClient } from 'subscriptions-transport-ws';
+import { createClient } from 'graphql-ws';
 
-import type {
-  Observer,
-  Observable,
-} from 'subscriptions-transport-ws';
-
-import { meros } from 'meros';
+import { meros } from 'meros/browser';
 
 /**
  * Relay requires developers to configure a "fetch" function that tells Relay how to load
  * the results of GraphQL queries from your server (or other data source). See more at
  * https://relay.dev/docs/en/quick-start-guide#relay-environment.
  */
-const fetchQuery: FetchFunction = (params: RequestParameters, variables: Variables) => {
-  return ReactObservable.create(sink => {
+const fetchQuery: FetchFunction = (params, variables) => {
+  return Observable.create(sink => {
     (async () => {
 
       const response = await fetch('http://localhost:8080/graphql', {
@@ -100,31 +93,24 @@ function isAsyncIterable(input: unknown): input is AsyncIterable<unknown> {
   );
 }
 
-const subscriptionClient = new SubscriptionClient(
-  'ws://localhost:8080/graphql',
-  {
-    reconnect: true,
-  },
-);
+const subscriptionClient = createClient({
+  url: 'ws://localhost:8080/graphql'
+});
 
-// Mismatch type between relay and subscriptions-transport-ws
-// https://github.com/facebook/relay/issues/3091
-// https://github.com/facebook/relay/issues/3349
-interface RelayObservableFixed <T = Record<string, unknown>> extends Observable<T>{
-  subscribe(observer: Observer<T>): {
-    unsubscribe: () => void;
-    closed: boolean;
-  },
-}
-
-const subscribe: SubscribeFunction = (request: RequestParameters, variables: Variables) => {
-  const subscribeObservable = subscriptionClient.request({
-    query: request.text as string,
-    operationName: request.name,
-    variables,
+const subscribe: SubscribeFunction = (
+  operation,
+  variables,
+): Observable<any> => {
+  return Observable.create(sink => {
+    return subscriptionClient.subscribe(
+      {
+        operationName: operation.name,
+        query: operation.text!,
+        variables,
+      },
+      sink
+    );
   });
-  // Important: Convert subscriptions-transport-ws observable type to Relay's
-  return ReactObservable.from(subscribeObservable as RelayObservableFixed<GraphQLResponse>);
 };
 
 const network = Network.create(fetchQuery, subscribe);
@@ -140,3 +126,4 @@ export const RelayEnvironment = new Environment({
     gcReleaseBufferSize: 10,
   }),
 });
+

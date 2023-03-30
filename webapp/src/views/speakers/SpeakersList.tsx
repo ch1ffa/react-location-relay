@@ -1,11 +1,10 @@
 import { FC, useState } from 'react';
-import { usePaginationFragment } from 'react-relay';
-import graphql from 'babel-plugin-relay/macro';
+import { usePaginationFragment, graphql } from 'react-relay';
 import type { SpeakersList_queryFragment } from './__generated__/SpeakersList_queryFragment.graphql';
 import type { SpeakersList_query$key } from './__generated__/SpeakersList_query.graphql';
 import { Speaker } from './Speaker';
 import { tw } from 'twind';
-import { UserAddIcon } from '@heroicons/react/outline';
+import { UserPlusIcon } from '@heroicons/react/24/outline';
 import { SpeakerAdd } from './SpeakerAdd';
 
 interface ISpeakersList {
@@ -47,7 +46,7 @@ export const SpeakersList: FC<ISpeakersList> =  ({ queryRef }) => {
       <div className={tw`flex`}>
         <div className={tw`text-2xl p-2`}>Speakers</div>
         <button className={tw`w-5 focus:outline-none`} onClick={() => setIsOpen(true)}>
-          <UserAddIcon className={tw`text-gray-300 hover:text-blue-500 active:text-blue-400`} />
+          <UserPlusIcon className={tw`text-gray-300 hover:text-blue-500 active:text-blue-400`} />
         </button>
       </div>
       <SpeakerAdd id={id} isOpen={isOpen} closeModal={() => setIsOpen(false)} />

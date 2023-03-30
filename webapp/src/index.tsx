@@ -1,15 +1,8 @@
-import { render } from 'react-dom';
-import { RelayEnvironmentProvider } from 'react-relay';
-import { RelayEnvironment } from './RelayEnvironment';
+import { createRoot } from 'react-dom/client';
 
 import { App } from './App';
 
-const RelayApp = () => {
-  return (
-    <RelayEnvironmentProvider environment={RelayEnvironment}>
-      <App/>
-    </RelayEnvironmentProvider>
-  );
-};
+const container = document.getElementById('app');
+const root = createRoot(container!);
+root.render(<App />);
 
-render(<RelayApp />, document.getElementById('app'));

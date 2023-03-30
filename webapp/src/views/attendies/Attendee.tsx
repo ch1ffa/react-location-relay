@@ -1,9 +1,7 @@
 import type { FC } from 'react';
-import { useFragment } from 'react-relay';
+import { useFragment, graphql } from 'react-relay';
 
 import { tw } from 'twind';
-
-import graphql from 'babel-plugin-relay/macro';
 
 import type { Attendee_attendee$key } from './__generated__/Attendee_attendee.graphql';
 

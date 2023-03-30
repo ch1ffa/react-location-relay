@@ -1,38 +1,20 @@
 {
+  "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
-    "paths": {
-      "@/*": [
-        "./*"
-      ]
-    },
-    "baseUrl": "src",
-    "rootDir": "./",
-    "sourceMap": true,
-    "module": "esnext",
-    "target": "es6",
-    "jsx": "react-jsx",
+    "composite": false,
     "declaration": true,
+    "declarationMap": true,
     "esModuleInterop": true,
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "allowJs": true,
+    "forceConsistentCasingInFileNames": true,
+    "inlineSources": false,
+    "isolatedModules": true,
+    "moduleResolution": "node",
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "preserveWatchOutput": true,
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "noFallthroughCasesInSwitch": true,
-    "importsNotUsedAsValues": "error"
+    "strict": true
   },
-  "include": [
-    "src",
-    "@types"
-  ],
-  "compileOnSave": false
+  "exclude": ["node_modules"]
 }

@@ -1,7 +1,6 @@
 import { FC, Suspense } from 'react';
-import { usePreloadedQuery } from 'react-relay';
+import { usePreloadedQuery, graphql } from 'react-relay';
 
-import graphql from 'babel-plugin-relay/macro';
 import type { LocationGenerics } from '@/routes';
 import { useMatch } from 'react-location';
 import { SessionsList } from './SessionsList';

@@ -1,5 +1,0 @@
-{
-  "*.+(ts|tsx)": [
-    "npm run lint"
-  ]
-}

@@ -1,9 +1,9 @@
 import { useDisableBodyScroll } from '@/hooks';
-import type { FC } from 'react';
+import type { FC, PropsWithChildren } from 'react';
 import { createPortal } from 'react-dom';
 import { tw } from 'twind';
 
-interface IModal {
+interface IModal extends PropsWithChildren {
   isOpen: boolean;
   onDismiss: () => void;
 }

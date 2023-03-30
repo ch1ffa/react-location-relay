@@ -3,8 +3,7 @@ import { tw } from 'twind';
 
 import { Modal } from '@/components';
 
-import graphql from 'babel-plugin-relay/macro';
-import { useMutation } from 'react-relay';
+import { useMutation, graphql } from 'react-relay';
 import type { SpeakerAdd_commitMutation } from './__generated__/SpeakerAdd_commitMutation.graphql';
 
 interface ISpeakerAdd {

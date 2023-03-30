@@ -22,9 +22,9 @@ To run webapp:
 
 ```bash
 cd webapp
-npm install
-npm run relay
-npm start
+pnpm i
+pnpm relay
+pnpm dev
 ```
 
 or use any other package manager

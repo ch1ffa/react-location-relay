@@ -1,9 +1,7 @@
 import { ChangeEvent, FC, useEffect, useState } from 'react';
-import { useFragment, useMutation } from 'react-relay';
+import { useFragment, useMutation, graphql } from 'react-relay';
 
 import { tw } from 'twind';
-
-import graphql from 'babel-plugin-relay/macro';
 
 import type { Speaker_speaker$key } from './__generated__/Speaker_speaker.graphql';
 import type { Speaker_modifySpeakerMutation } from './__generated__/Speaker_modifySpeakerMutation.graphql';

@@ -1,6 +1,5 @@
 import type { FC } from 'react';
-import { usePaginationFragment } from 'react-relay';
-import graphql from 'babel-plugin-relay/macro';
+import { usePaginationFragment, graphql } from 'react-relay';
 import { Attendee } from './Attendee';
 import { tw } from 'twind';
 import type { AttendeesList_queryFragment } from './__generated__/AttendeesList_queryFragment.graphql';
